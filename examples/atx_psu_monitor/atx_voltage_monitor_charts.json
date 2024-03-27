@@ -1,0 +1,1947 @@
+{
+	"id": "atx_voltage_monitor_separated_ver",
+	"name": "Atx PSU monitor",
+	"description": "Atx power supply voltages monitor. This device monitoring PS_ON#, PWR_OK timeouts and main voltage lines(like +3.3v, +5v, +12v) in 20ksps per line and output data like current values, avg, min and max",
+	"version": 20230911,
+	"author": "max-s-h",
+	"email": "-",
+	"listIndex": 0,
+	"enabled": true,
+	"dataSource": {
+		"type": "bt",
+		"mac": "AB:84:95:56:34:02"
+	},
+
+	"protocolName": null,
+	"protocol": {
+	"name": "atx voltage monitor avg ver",
+	"description": "",
+	"version": 20220522,
+	"author": "",
+	"email": "",
+	"settings": {
+		"format": {
+			"date": "",
+			"time": "",
+			"datetime": "",
+			"bool": {
+				"true": [
+					"1"
+				],
+				"false": [
+					"0"
+				]
+			}
+		}
+	},
+	"default": {
+		"line": {
+			"prefix": "",
+			"separator": "\n",
+			"postfix": ""
+		},
+		"item": {
+			"prefix": "",
+			"postfix": "",
+			"keyValueSeparator": "=",
+			"separator": ";"
+		},
+		"command": {
+			"prefix": "$",
+			"separator": "=",
+			"postfix": ";\r\n"
+		}
+	},
+	"items": [
+		{	"description": "Time of event received by a client device",
+			"id": "device_time",
+			"key": "",
+			"name": "Time",
+			"access": {
+				"read": {
+					"dataType": "STRING",
+					"keyValueSeparator": "",
+					"prefixPattern":	"t=",
+					"valuePattern": "[\\d]{2}:[\\d]{2}:[\\d]{2}.[\\d]{1,3}"
+				},
+				"write": {
+					"dataType":			"STRING",
+					"keyValueSeparator": "",
+					"valuePrefix":		"t=",
+					"validationPattern": "^[\\d]{2}:[\\d]{2}:[\\d]{2}$",
+					"refreshCommand":	"?"
+				}
+			}
+		},
+
+		{	"description": "Internal Vref current value",
+			"id": "vref_curr_v",
+			"key": "vref_curr_v",
+			"name": "Vref current value",
+			"access": {
+				"read": {
+					"dataType": "NUMBER",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "Internal Vref avg value",
+			"id": "vref_avg",
+			"key": "vref_avg",
+			"name": "Vref avg value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "Internal Vref min value",
+			"id": "vref_min",
+			"key": "vref_min",
+			"name": "Vref min value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "Internal Vref max value",
+			"id": "vref_max",
+			"key": "vref_max",
+			"name": "Vref max value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+
+		{	"description": "12v current value",
+			"id": "c12v_curr_v",
+			"key": "c12v_curr_v",
+			"name": "12v value",
+			"access": {
+				"read": {
+					"dataType": "NUMBER",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "12v avg value",
+			"id": "c12v_avg",
+			"key": "c12v_avg",
+			"name": "12v avg value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "12v min value",
+			"id": "c12v_min",
+			"key": "c12v_min",
+			"name": "12v min value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "12v max value",
+			"id": "c12v_max",
+			"key": "c12v_max",
+			"name": "12v max value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+
+		{	"description": "5v current value",
+			"id": "c5v_curr_v",
+			"key": "c5v_curr_v",
+			"name": "5v value",
+			"access": {
+				"read": {
+					"dataType": "NUMBER",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "5v avg value",
+			"id": "c5v_avg",
+			"key": "c5v_avg",
+			"name": "5v avg value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "5v min value",
+			"id": "c5v_min",
+			"key": "c5v_min",
+			"name": "5v min value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "5v max value",
+			"id": "c5v_max",
+			"key": "c5v_max",
+			"name": "5v max value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+
+		{	"description": "3.3v current value",
+			"id": "c3v_curr_v",
+			"key": "c3v_curr_v",
+			"name": "3.3v value",
+			"access": {
+				"read": {
+					"dataType": "NUMBER",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "3.3v avg value",
+			"id": "c3v_avg",
+			"key": "c3v_avg",
+			"name": "3.3v avg value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "3.3v min value",
+			"id": "c3v_min",
+			"key": "c3v_min",
+			"name": "3.3v min value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"description": "3.3v max value",
+			"id": "c3v_max",
+			"key": "c3v_max",
+			"name": "3.3v max value",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		
+		
+		{	"name": "c12v_on_duration",
+			"id": "c12v_on_duration",
+			"key": "c12v_on_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "c12v_off_duration",
+			"id": "c12v_off_duration",
+			"key": "c12v_off_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "c5v_on_duration",
+			"id": "c5v_on_duration",
+			"key": "c5v_on_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "c5v_off_duration",
+			"id": "c5v_off_duration",
+			"key": "c5v_off_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "c3v_on_duration",
+			"id": "c3v_on_duration",
+			"key": "c3v_on_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "c3v_off_duration",
+			"id": "c3v_off_duration",
+			"key": "c3v_off_duration",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "on_pwr_ok_timeout",
+			"id": "on_pwr_ok_timeout",
+			"key": "on_pwr_ok_timeout",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "off_pwr_ok_timeout",
+			"id": "off_pwr_ok_timeout",
+			"key": "off_pwr_ok_timeout",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[\\d]+",
+					"postfixPattern": ","
+				}
+			}
+		},
+
+		{	"name": "ps_on_status",
+			"id": "ps_on_status",
+			"key": "ps_on_status",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[01]{1}",
+					"postfixPattern": ","
+				}
+			}
+		},
+		{	"name": "pwr_ok_status",
+			"id": "pwr_ok_status",
+			"key": "pwr_ok_status",
+			"access": {
+				"read": {
+					"dataType": "INT",
+					"valuePattern": "[01]{1}",
+					"postfixPattern": ","
+				}
+			}
+		},
+
+
+		{	"description": "Refresh info including time, status, progress",
+			"id": "refresh_info",
+			"name": "Refresh info",
+
+			"access": {
+				"write": {
+					"dataType":				"COMMAND",
+					"key":					"i",
+					"keyValueSeparator":	"",
+					"refreshCommand": ""
+				}
+			}
+		},
+
+		{	"description": "Clear collected stats like avg, min, max",
+			"id": "settings_clear",
+			"name": "Clear stats",
+
+			"access": {
+				"write": {
+					"dataType":				"COMMAND",
+					"key":					"settings=clear",
+					"keyValueSeparator":	"",
+					"refreshCommand": ""
+				}
+			}
+		},
+		{	"description": "Monitoring enabled flag",
+			"id": "settings_monitoring_enabled",
+			"name": "Monitoring enabled",
+
+			"access": {
+				"read": {
+					"dataType":				"INT",
+					"key":					">\\$settings=enabled",
+					"keyValueSeparator":	":",
+					"valuePattern":			"[01]{1}"
+				},
+				"write": {
+					"dataType":				"INT",
+					"key":					"settings=enabled",
+					"keyValueSeparator":	":",
+					"validationPattern":	"^[01]{1}$",
+					"refreshCommand":		"?"
+				}
+			}
+		},
+		{	"description": "Updates per second(from 1 to 99)",
+			"id": "settings_ups",
+			"name": "Updates per second",
+
+			"access": {
+				"read": {
+					"dataType":				"INT",
+					"key":					">\\$settings=ups",
+					"keyValueSeparator":	":",
+					"valuePattern":			"[\\d]{1,2}"
+				},
+				"write": {
+					"dataType":				"INT",
+					"key":					"settings=ups",
+					"keyValueSeparator":	":",
+					"validationPattern":	"^[\\d]{1,2}$",
+					"refreshCommand":		"?"
+				}
+			}
+		},
+		{	"description": "MCU wait for interrupt flag",
+			"id": "settings_wfiEnabled",
+			"name": "Wfi enabled",
+
+			"access": {
+				"read": {
+					"dataType":				"INT",
+					"key":					">\\$settings=wfi",
+					"keyValueSeparator":	":",
+					"valuePattern":			"[01]{1}"
+				},
+				"write": {
+					"dataType":				"INT",
+					"key":					"settings=wfi",
+					"keyValueSeparator":	":",
+					"validationPattern":	"^[01]{1}$",
+					"refreshCommand":		"?"
+				}
+			}
+		},
+		
+		{	"description": "Avg Method(0-none, 1-avg, 2-rms)",
+			"id": "settings_avgMethod",
+			"name": "Avg Method",
+
+			"access": {
+				"read": {
+					"dataType":				"INT",
+					"key":					">\\$settings=avgMethod",
+					"keyValueSeparator":	":",
+					"valuePattern":			"[012]{1}"
+				},
+				"write": {
+					"dataType":				"INT",
+					"key":					"settings=avgMethod",
+					"keyValueSeparator":	":",
+					"validationPattern":	"^[012]{1}$",
+					"refreshCommand":		"?"
+				}
+			}
+		},
+		
+		{	"description": "Avg method batch size",
+			"id": "settings_avgBatchSize",
+			"name": "Avg batch size",
+
+			"access": {
+				"read": {
+					"dataType":				"INT",
+					"key":					">\\$settings=avgBatchSize",
+					"keyValueSeparator":	":",
+					"valuePattern":			"[\\d]{1,3}"
+				},
+				"write": {
+					"dataType":				"INT",
+					"key":					"settings=avgBatchSize",
+					"keyValueSeparator":	":",
+					"validationPattern":	"^[\\d]{1,3}$",
+					"refreshCommand":		"?"
+				}
+			}
+		}
+
+	]
+},
+
+
+
+	"widgets": [
+	
+		[
+			{	"id": "time",
+				"type": "INPUT",
+				"name": "Time",
+				"description": "Device time",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "STRING",
+						"value": "device_time"
+					}
+				},
+				
+				"refreshDataItemId": "device_time",
+				"editDataItemId": "device_time",
+				
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			}
+		],
+
+
+		[
+			{	"id": "value_title_current",
+				"type": "TITLE",
+				"name": "Current",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "value_title_avg",
+				"type": "TITLE",
+				"name": "Avg",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "value_title_min",
+				"type": "TITLE",
+				"name": "Min",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "value_title_max",
+				"type": "TITLE",
+				"name": "Max",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		],
+
+
+		[
+			{	"id": "vref_curr_v",
+				"type": "TEXT",
+				"name": "Vref",
+				"description": "Internal Vref current value",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "STRING",
+						"value": "vref_curr_v"
+					}
+				},
+				
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "vref_avg",
+				"type": "TEXT",
+				"name": "Vref",
+				"description": "Internal Vref avg value",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "STRING",
+						"value": "vref_avg"
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "vref_min",
+				"type": "TEXT",
+				"name": "Vref",
+				"description": "Internal Vref min value",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "STRING",
+						"value": "vref_min"
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "vref_max",
+				"type": "TEXT",
+				"name": "Vref",
+				"description": "Internal Vref max value",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "STRING",
+						"value": "vref_max"
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			}
+		],
+		[
+			{	"id": "c12v_curr_v",
+				"type": "TEXT",
+				"name": "+12v",
+				"description": "+12v current value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_curr_v"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c12v_avg",
+				"type": "TEXT",
+				"name": "+12v",
+				"description": "+12v avg value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_avg"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c12v_min",
+				"type": "TEXT",
+				"name": "+12v",
+				"description": "+12v min value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_min"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c12v_max",
+				"type": "TEXT",
+				"name": "+12v",
+				"description": "+12v max value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_max"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			}
+		],
+		[
+			{	"id": "c5v_curr_v",
+				"type": "TEXT",
+				"name": "+5v",
+				"description": "+5v current value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_curr_v"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c5v_avg",
+				"type": "TEXT",
+				"name": "+5v",
+				"description": "+5v avg value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_avg"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c5v_min",
+				"type": "TEXT",
+				"name": "+5v",
+				"description": "+5v min value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_min"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c5v_max",
+				"type": "TEXT",
+				"name": "+5v",
+				"description": "+5v max value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_max"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			}
+		],
+		[
+			{	"id": "c3v_curr_v",
+				"type": "TEXT",
+				"name": "+3.3v",
+				"description": "+3.3v current value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_curr_v"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c3v_avg",
+				"type": "TEXT",
+				"name": "+3.3v",
+				"description": "+3.3v avg value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_avg"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c3v_min",
+				"type": "TEXT",
+				"name": "+3.3v",
+				"description": "+3.3v min value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_min"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			},
+			{	"id": "c3v_max",
+				"type": "TEXT",
+				"name": "+3.3v",
+				"description": "+3.3v max value",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"main": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_max"
+							}
+						]
+					}
+				},
+				"properties": {
+					"numberFormat": "#0.000"
+				},
+				"size": {
+					"h": 0,
+					"w": 0
+				}
+			}
+		],
+
+
+		[
+			{	"id": "ps_on_status",
+				"type": "TEXT",
+				"name": "PS_ON# level",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0, "w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "ps_on_status"
+					}
+				}
+			},
+			{	"id": "pwr_ok_status",
+				"type": "TEXT",
+				"name": "PWR OK level",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "pwr_ok_status"
+					}
+				}
+			}
+		],
+
+		[
+			{	"id": "c3v_voltage_timing_title",
+				"type": "TITLE",
+				"name": "3v3 time",
+				"description": "uS",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "c5v_voltage_timing_title",
+				"type": "TITLE",
+				"name": "5v time",
+				"description": "uS",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "c12v_voltage_timing_title",
+				"type": "TITLE",
+				"name": "12v time",
+				"description": "uS",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			{	"id": "pwr_ok_timing_title",
+				"type": "TITLE",
+				"name": "PwrOk time",
+				"description": "uS",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		],
+
+		[
+			{	"id": "on_c3v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% on",
+				"description": "us from PsOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0, "w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c3v_on_duration"
+					}
+				}
+			},
+			{	"id": "on_c5v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% on",
+				"description": "us from PsOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c5v_on_duration"
+					}
+				}
+			},
+			{	"id": "on_c12v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% on",
+				"description": "us from PsOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c12v_on_duration"
+					}
+				}
+			},
+			{	"id": "on_pwr_ok_timeout",
+				"type": "TEXT",
+				"name": "pwr ok on",
+				"description": "us from PsOn to hight level",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "on_pwr_ok_timeout"
+					}
+				}
+			}
+		],
+
+		[
+			{	"id": "off_c3v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% off",
+				"description": "us from PwrOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c3v_off_duration"
+					}
+				}
+			},
+			{	"id": "off_c5v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% off",
+				"description": "us from PwrOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c5v_off_duration"
+					}
+				}
+			},
+			{	"id": "off_c12v_voltage_95_duration",
+				"type": "TEXT",
+				"name": "95% off",
+				"description": "us from PwrOn to 95%",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "c12v_off_duration"
+					}
+				}
+			},
+			{	"id": "off_pwr_ok_timeout",
+				"type": "TEXT",
+				"name": "pwr ok off",
+				"description": "us from PwrOk Low to PsOn hight",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+				"size": {"h": 0,"w": 0},
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "off_pwr_ok_timeout"
+					}
+				}
+			}
+		],
+
+
+
+
+
+		[
+			{	"id": "chart_history_12v",
+				"type": "CHART",
+				"name": "History",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"x": {
+						"action": "RESERVED",
+						"type": "NUMBER",
+						"value": "TIMESTAMP"
+					},
+					"y_12v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_min"
+							}
+						]
+					},
+					"y_5v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_max"
+							}
+						]
+					},
+					"y_3v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0037498
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c12v_avg"
+							}
+						]
+					}
+				},
+
+				"properties": {
+					"chartType": "line",
+					"showLegend": false,
+					"showMarkers": true,
+					"autoScale": true,
+
+					"yAxises": 	[
+						{
+							"id": "y_12v",
+							"name": "+12v_min",
+							"color": "c2c22e",
+							"axisName": "+12v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_5v",
+							"name": "+12v_max",
+							"color": "ff0000",
+							"axisName": "+5v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_3v",
+							"name": "+12v_avg",
+							"color": "f99303",
+							"axisName": "+3.3v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						}
+					]
+				},
+				"size": {
+					"h": 3,
+					"w": 0
+				}
+			}
+		],
+		[
+			{	"id": "chart_history_5v",
+				"type": "CHART",
+				"name": "History",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"x": {
+						"action": "RESERVED",
+						"type": "NUMBER",
+						"value": "TIMESTAMP"
+					},
+					"y_12v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_min"
+							}
+						]
+					},
+					"y_5v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_max"
+							}
+						]
+					},
+					"y_3v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0015541
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c5v_avg"
+							}
+						]
+					}
+				},
+
+				"properties": {
+					"chartType": "line",
+					"showLegend": false,
+					"showMarkers": true,
+					"autoScale": true,
+
+					"yAxises": 	[
+						{
+							"id": "y_12v",
+							"name": "+5v_min",
+							"color": "c2c22e",
+							"axisName": "+12v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_5v",
+							"name": "+5v_max",
+							"color": "ff0000",
+							"axisName": "+5v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_3v",
+							"name": "+5v_avg",
+							"color": "f99303",
+							"axisName": "+3.3v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						}
+					]
+				},
+				"size": {
+					"h": 3,
+					"w": 0
+				}
+			}
+		],
+		[
+			{	"id": "chart_history_3v",
+				"type": "CHART",
+				"name": "History",
+				"description": null,
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 10000,
+
+				"value": {
+					"x": {
+						"action": "RESERVED",
+						"type": "NUMBER",
+						"value": "TIMESTAMP"
+					},
+					"y_vref": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.00080586
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "vref_avg"
+							}
+						]
+					},
+					"y_12v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_min"
+							}
+						]
+					},
+					"y_5v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_max"
+							}
+						]
+					},
+					"y_3v": {
+						"action": "MUL",
+						"type": "NUMBER",
+						"value": [
+							{
+								"action": "FIXED",
+								"type": "NUMBER",
+								"value": 0.0010302
+							},
+							{
+								"action": "DATA",
+								"type": "NUMBER",
+								"value": "c3v_avg"
+							}
+						]
+					}
+				},
+
+				"properties": {
+					"chartType": "line",
+					"showLegend": false,
+					"showMarkers": true,
+					"autoScale": true,
+
+					"yAxises": 	[
+						{
+							"id": "y_12v",
+							"name": "+3v_min",
+							"color": "c2c22e",
+							"axisName": "+12v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_5v",
+							"name": "+3v_max",
+							"color": "ff0000",
+							"axisName": "+5v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						},
+						{
+							"id": "y_3v",
+							"name": "+3.3v_avg",
+							"color": "f99303",
+							"axisName": "+3.3v",
+							"showCircle": false,
+							"showIndicators": true,
+							"axis": "right",
+							"showValues": false
+						}
+					]
+				},
+				"size": {
+					"h": 3,
+					"w": 0
+				}
+			}
+		],
+
+
+		[
+			{	"id": "refresh_all_btn",
+				"type": "BUTTON",
+				"name": "Refresh",
+				"description": "refresh all data",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 0,
+
+				"refreshDataItemId": "refresh_info",
+				"editDataItemId": "refresh_info",
+
+				"properties": {
+				},
+				"size": {
+					"h": 0,
+					"w": 4
+				}
+			},
+			{	"id": "settings_clear",
+				"type": "BUTTON",
+				"name": "Clear stats",
+				"description": "Clear collected stats",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 0,
+
+				"refreshDataItemId": "settings_clear",
+				"editDataItemId": "settings_clear",
+
+				"properties": {
+				},
+				"size": {
+					"h": 0,
+					"w": 4
+				}
+			}
+		],
+
+
+		[
+			{	"id": "settings_title",
+				"type": "TITLE",
+				"name": "Relative options",
+				"description": "Relative options for device control",
+				"enabled": true,
+				"readOnly": true,
+				"autoUpdateInterval": 0,
+
+				"size": {
+					"h": 0,
+					"w": 4
+				}
+			}
+		],
+		
+		[
+			{	"id": "settings_monitoring_enabled",
+				"type":				"INPUT",
+				"name":				"Enabled",
+				"description":		"Monitoring enabled: 0|1",
+				"enabled":			true,
+				"readOnly":			false,
+				"autoUpdateInterval":	0,
+
+				"value": {
+					"main": {
+						"action":	"DATA",
+						"type":		"INT",
+						"value":	"settings_monitoring_enabled"
+					}
+				},
+
+				"refreshDataItemId":	"settings_monitoring_enabled",
+				"editDataItemId":		"settings_monitoring_enabled",
+
+				"properties": {
+					"orientation": "horizontal",
+					"showBorder":	true
+				},
+				
+				"position": {
+					"x": 0,
+					"y": 0
+				},
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		],
+		
+		[
+			{	"id": "settings_ups",
+				"type": "SEEK_BAR",
+				"name": "Updates per second",
+				"description": "Output data per second count(from 1 to 99)",
+				"enabled": true,
+				"readOnly": false,
+				"autoUpdateInterval": 0,
+
+				"value": {
+					"main": {
+						"action": "DATA",
+						"type": "INT",
+						"value": "settings_ups"
+					},
+					"min": {
+						"action": "FIXED",
+						"type": "INT",
+						"value": 1
+					},
+					"max": {
+						"action": "FIXED",
+						"type": "INT",
+						"value": 99
+					}
+				},
+
+				"refreshDataItemId": "settings_ups",
+				"editDataItemId": "settings_ups",
+
+				"properties": {
+					"showValue": true,
+					"stepsCount": 98
+				},
+				"position": {
+					"x": 0,
+					"y": 7
+				},
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		],
+		
+		[
+			{	"id": "settings_wfiEnabled",
+				"type":				"INPUT",
+				"name":				"WFI Enabled",
+				"description":		"Mcu wait for interrupt enabled: 0|1",
+				"enabled":			true,
+				"readOnly":			false,
+				"autoUpdateInterval":	0,
+
+				"value": {
+					"main": {
+						"action":	"DATA",
+						"type":		"INT",
+						"value":	"settings_wfiEnabled"
+					}
+				},
+
+				"refreshDataItemId":	"settings_wfiEnabled",
+				"editDataItemId":		"settings_wfiEnabled",
+				
+				"properties": {
+					"orientation": "horizontal",
+					"showBorder":	true
+				},
+				
+				"position": {
+					"x": 0,
+					"y": 0
+				},
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		],
+
+		[
+			{	"id":				"settings_avgMethod",
+				"type":				"INPUT",
+				"name":				"Avg Method",
+				"description":		"0-none, 1-avg, 2-rms",
+				"enabled":			true,
+				"readOnly":			false,
+				"autoUpdateInterval":	0,
+
+				"value": {
+					"main": {
+						"action":	"DATA",
+						"type":		"INT",
+						"value":	"settings_avgMethod"
+					}
+				},
+
+				"refreshDataItemId":	"settings_avgMethod",
+				"editDataItemId":		"settings_avgMethod",
+				
+				"properties": {
+					"showBorder":	true
+				},
+				
+				"position": {
+					"x": 0,
+					"y": 0
+				},
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			},
+			
+			{	"id": "settings_avgBatchSize",
+				"type":				"INPUT",
+				"name":				"Avg batch size",
+				"description":		"Avg method batch size",
+				"enabled":			true,
+				"readOnly":			false,
+				"autoUpdateInterval":	0,
+
+				"value": {
+					"main": {
+						"action":	"DATA",
+						"type":		"INT",
+						"value":	"settings_avgBatchSize"
+					}
+				},
+
+				"refreshDataItemId":	"settings_avgBatchSize",
+				"editDataItemId":		"settings_avgBatchSize",
+				
+				"properties": {
+					"showBorder":	true
+				},
+				
+				"position": {
+					"x": 0,
+					"y": 0
+				},
+				"size": {
+					"h": 0,
+					"w": 1
+				}
+			}
+		]
+
+
+	]
+}
